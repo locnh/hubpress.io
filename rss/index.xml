@@ -1,4 +1,141 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Life hacker, life's easier]]></title><description><![CDATA[It's easier than you think to live the life you want ..]]></description><link>http://locnh.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 17 Jul 2016 10:07:21 GMT</lastBuildDate><atom:link href="http://locnh.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Docker for Magento, how to prepare develop environment in 10 senconds]]></title><description><![CDATA[<div class="paragraph">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Life hacker, life's easier]]></title><description><![CDATA[It's easier than you think to live the life you want ..]]></description><link>http://locnh.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 17 Jul 2016 10:21:38 GMT</lastBuildDate><atom:link href="http://locnh.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Best practices for setting up Docker on Ubuntu Dev machine]]></title><description><![CDATA[<div class="sect2">
+<h3 id="_install_docker">Install Docker</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Run this command to install Docker in one shot:</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ curl https://get.docker.com/ | sudo sh</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run this command to add your user to <code>docker group</code>, so you don&#8217;t need to use <code>sudo</code> or <code>root</code> to communicate with <code>docker</code>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo usermod -aG docker `whoami`</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then <code>Log out</code> and <code>Log in</code> again. You&#8217;re now ready to do some hacks with docker !</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_local_dns">Configure local DNS</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Why do we need to do this ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Trust me, you don&#8217;t need to manually modify <code>/etc/hosts</code>, <strong>time by time</strong>.</p>
+</li>
+<li>
+<p>Ubuntu was installed with <code>dnsmasq</code> for dns caching, and it&#8217;s a good idea to use it for <code>*.docker</code> ( or <code>*.local</code>, whatever) resolving.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Okay, let&#8217;s do a trick:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Add a wild-card record at the end of <code>dnsmasq.conf</code></p>
+<div class="literalblock">
+<div class="content">
+<pre>$ echo "address=/.docker/127.0.0.1" | sudo tee -a /etc/dnsmasq.conf</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then restart dns service</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ sudo service dnsmasq restart</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Make a test with ping</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ ping whatever.docker</pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you get something like this, it works</p>
+<div class="literalblock">
+<div class="content">
+<pre>64 bytes from 127.0.0.1: icmp_seq=0 ttl=52 time=0 ms</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now all domains <code>*.docker</code> will point to <code>127.0.0.1</code>, no editing <code>/etc/hosts</code> anymore.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_make_a_docker_container_for_code_database_service_code">Make a docker container for <code>database service</code></h3>
+<div class="ulist">
+<ul>
+<li>
+<p>With <code>datadir</code> mounted from physical host</p>
+</li>
+<li>
+<p>Give other <code>application containers</code> links to this <code>database container</code></p>
+</li>
+<li>
+<p>Why do we need to do this ?</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Each time container restart, it will be assigned a new IP by <code>docker-engine</code> (the minimal number being available),  giving container name and use <code>--link</code> is a wisely choice.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Create a database container using percona image:</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker run --name datanode -d -v /var/lib/mysql:/var/lib/mysql -p 3306:3306 percona</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a web server container and link with <code>datanode</code>, I use magento, so the command will be:</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker run --name webnode -d -v /var/www/sourcode:/var/www/html -p 80:80 --link datanode locnh/docker-magento</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now from <code>webnode</code> can reach <code>datanode</code> by using hostname <code>datanode</code> instead of IP</p>
+<div class="literalblock">
+<div class="content">
+<pre>$ docker exec webnode cat /etc/hosts</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Easy enough ?</p>
+</div>
+</div>]]></description><link>http://locnh.com/2016/07/16/Best-practices-for-setting-up-Docker-on-Ubuntu-Dev-machine.html</link><guid isPermaLink="true">http://locnh.com/2016/07/16/Best-practices-for-setting-up-Docker-on-Ubuntu-Dev-machine.html</guid><category><![CDATA[Docker]]></category><category><![CDATA[ Magento]]></category><category><![CDATA[ DevOps]]></category><dc:creator><![CDATA[Joey Nguyen]]></dc:creator><pubDate>Sat, 16 Jul 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Docker for Magento, how to prepare develop environment in 10 senconds]]></title><description><![CDATA[<div class="paragraph">
 <p>As a developer, preparing dev environment  is painful, it&#8217;s nowadays really a nightmare when we need to mix a lot of technologies, platforms, softwares&#8217;s versions. So, let&#8217;s make life easier with Docker !</p>
 </div>
 <iframe src="//slides.com/locnh/docker-for-dev/embed?style=light" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
