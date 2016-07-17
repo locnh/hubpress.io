@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Life hacker, life's easier]]></title><description><![CDATA[It's easier than you think to live the life you want ..]]></description><link>http://locnh.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 17 Jul 2016 15:03:02 GMT</lastBuildDate><atom:link href="http://locnh.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Best practices for setting up Docker on Ubuntu Dev machine]]></title><description><![CDATA[<div class="sect4">
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Life hacker, life's easier]]></title><description><![CDATA[It's easier than you think to live the life you want ..]]></description><link>http://locnh.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 17 Jul 2016 15:04:29 GMT</lastBuildDate><atom:link href="http://locnh.com/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Best practices for setting up Docker on Ubuntu Dev machine]]></title><description><![CDATA[<div class="sect4">
 <h5 id="_install_docker">Install Docker</h5>
 <div class="ulist">
 <ul>
@@ -143,8 +143,8 @@
 <iframe src="//slides.com/locnh/docker-for-dev/embed" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </div>
 </div>
-<div class="sect4">
-<h5 id="_references">References</h5>
+<div class="sect2">
+<h3 id="_references">References</h3>
 <div class="paragraph">
 <p><a href="http://slides.com/locnh/docker-for-dev/fullscreen">Slides</a>, <a href="https://hub.docker.com/r/locnh/docker-magento">Dockerhub</a>, <a href="https://github.com/locnh/docker-magento">Github</a></p>
 </div>
