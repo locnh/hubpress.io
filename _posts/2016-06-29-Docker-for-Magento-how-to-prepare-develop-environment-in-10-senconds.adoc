@@ -1,11 +1,11 @@
 = Docker for Magento, how to prepare develop environment in 10 senconds
 :published_at: 2016-06-29
 :hp-tags: Docker, Magento, DevOps
-
+image::http://magenticians.com/wp-content/uploads/2014/12/docker-magento-2-768x250.png[Docker Magento]
 As a developer, preparing dev environment  is painful, it's nowadays really a nightmare when we need to mix a lot of technologies, platforms, softwares's versions. So, let's make life easier with Docker !
 ++++
-<iframe src="//slides.com/locnh/docker-for-dev/embed?style=light" width="576" height="420" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe src="//slides.com/locnh/docker-for-dev/embed?style=dark" width="768" height="636" scrolling="no" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 ++++
-- Slides: http://slides.com/locnh/docker-for-dev/fullscreen
-- Dockerhub: https://hub.docker.com/r/locnh/docker-magento
-- Github: https://github.com/locnh/docker-magento
+
+===== References
+http://slides.com/locnh/docker-for-dev/fullscreen[Slides], https://hub.docker.com/r/locnh/docker-magento[Dockerhub], https://github.com/locnh/docker-magento[Github]
