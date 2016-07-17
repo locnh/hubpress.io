@@ -1,0 +1,60 @@
+= Best practices for setting up Docker on Ubuntu Dev machine
+:published_at: 2016-07-16
+:hp-tags: Docker, Magento, DevOps
+:compat mode: true
+
+### Install Docker
+* Run this command to install Docker in one shot:
+
+	$ curl https://get.docker.com/ | sudo sh
+
+* Run this command to add your user to `docker group`, so you don't need to use `sudo` or `root` to communicate with `docker`:
+
+    $ sudo usermod -aG docker `whoami`
+
+
+* Then `Log out` and `Log in` again. You're now ready to do some hacks with docker !
+
+### Configure local DNS
+* Why do we need to do this ?
+    - Trust me, you don't need to manually modify `/etc/hosts`, *time by time*.
+    - Ubuntu was installed with `dnsmasq` for dns caching, and it's a good idea to use it for `\*.docker` ( or `*.local`, whatever) resolving.
+
+* Okay, let's do a trick:
+
+    - Add a wild-card record at the end of `dnsmasq.conf`
+
+    $ echo "address=/.docker/127.0.0.1" | sudo tee -a /etc/dnsmasq.conf
+
+	- Then restart dns service
+
+    $ sudo service dnsmasq restart
+
+    - Make a test with ping
+
+    $ ping whatever.docker
+
+    - If you get something like this, it works
+
+    64 bytes from 127.0.0.1: icmp_seq=0 ttl=52 time=0 ms
+
+    - Now all domains `*.docker` will point to `127.0.0.1`, no editing `/etc/hosts` anymore.
+
+### Make a docker container for `database service`
+* With `datadir` mounted from physical host
+* Give other `application containers` links to this `database container`
+* Why do we need to do this ?
+    - Each time container restart, it will be assigned a new IP by `docker-engine` (the minimal number being available),  giving container name and use `--link` is a wisely choice.
+* Create a database container using percona image:
+
+    $ docker run --name datanode -d -v /var/lib/mysql:/var/lib/mysql -p 3306:3306 percona
+
+* Create a web server container and link with `datanode`, I use magento, so the command will be:
+
+    $ docker run --name webnode -d -v /var/www/sourcode:/var/www/html -p 80:80 --link datanode locnh/docker-magento
+
+* Now from `webnode` can reach `datanode` by using hostname `datanode` instead of IP
+
+    $ docker exec webnode cat /etc/hosts
+
+Easy enough ?
