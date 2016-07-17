@@ -16,12 +16,9 @@
   },
   "socialnetwork": {
     "email": "me@locnh.com",
-    "twitter": "locnh",
-    "googleplus": "jutoms",
-    "linkedin": "locnh",
-    "facebook": "locnh",
-    "instagram": "locnh",
-    "github": "locnh"
+    "twitter": "https://twitter.com/locnh",
+    "linkedin": "https://linkedin.com/in/locnh",
+    "github": "https://github.com/locnh"
   },
   "theme": {
     "name": "ghostium"
