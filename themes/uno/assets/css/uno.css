@@ -964,6 +964,10 @@ h1 {
   line-height: 1.2em;
   letter-spacing: .05em; }
 
+  h1.post-title {
+  font-family: "League Gothic", Impact, sans-serif;
+  font-size: 2.2em; }
+
 h2 {
   font-size: 2.2em; }
 
@@ -1442,7 +1446,8 @@ i {
   margin-top: 0;
   margin-bottom: .2em;
   font-size: 1.5em;
-  line-height: 1.3em; }
+  line-height: 1.3em;
+  font-family: "League Gothic", Impact, sans-serif; }
   .post-list__post-title a {
     color: #333333; }
     .post-list__post-title a:hover {
