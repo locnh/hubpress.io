@@ -1,0 +1,57 @@
+= The easiest way to run PokemonGo-Bot with Docker
+:published_at: 2016-08-18
+:hp-tags: Docker, Pokemon GO, PokemonGO-Bot
+:compat mode: true
+
+## What am I gonna do ?
+* How to setup https://github.com/PokemonGoF/PokemonGo-Bot[PokemonGo-Bot] of https://github.com/PokemonGoF[PokemonGoF Team] with WebUI in a few minutes.
+* In this guide, I'm gonna use `dev` branch for newest features. For `stable` version (`master` branch), it's more easier.
+
+## Why Docker ?
+* Cross-platform: No matter what OS you're using is Linux, Windows or Mac.
+* Prebuild with all the things we need.
+
+## Preparation
+* Download and install docker from https://www.docker.com/
+* Make sure you share the partitions / drivers which will store the PokemonGo-Bot with the Docker.
+* Download and install `git`, please use google "How to install git on Windows". I think Mac and Linux guys already know how to install git, and docker also.
+* Google Map API keys: 1 for browser, 1 for server. Get them https://developers.google.com/maps/documentation/javascript/get-api-key[here] for free.
+
+## Here we go
+* Open the powershell or terminal to clone `PokemonGo-Bot` source code, we're cloning branch `dev`, not `master`.
+
+    $ git clone --recursive -b dev https://github.com/PokemonGoF/PokemonGo-Bot
+    $ cd PokemonGo-Bot
+
+* Edit your configurations:
+    - config/config.json
+    - web/config/userdata.json
+    
+* Edit the `docker-compose.yml` file, at this time when I'm making this guide, my `docker-compose.yml` is a bit different from the original file in the repo. I'm gonna push to my own repo and make a PR soon.
+
+  version: '2'
+  services:
+    bot1-pokego:
+      image: svlentink/pokemongo-bot
+      volumes:
+       - ./configs:/usr/src/app/configs
+       - ./web:/usr/src/app/web
+      stdin_open: true
+      tty: true
+    bot1-pokegoweb:
+      image: nginx
+      ports:
+       - "8000:80"
+      volumes:
+        - ./web:/usr/share/nginx/html
+      depends_on:
+       - bot1-pokego
+
+* Let `docker-compose` do the rest
+
+	$ docker-composer up
+    
+* Grab a coffee and see your bot's status via `http://localhost:8000`
+* Easy and sexy enough ?? If `yes`, please share with people who needs help.
+
+* In case you need `stable` version, replace: `svlentink/pokemongo-bot` with `svlentink/pokemongo-bot:stable` in the `docker-compose.yml`
