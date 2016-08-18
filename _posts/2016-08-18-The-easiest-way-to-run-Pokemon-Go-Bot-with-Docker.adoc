@@ -49,7 +49,7 @@
 
 * Let `docker-compose` do the rest
 
-	$ docker-composer up
+	$ docker-compose up
     
 * Grab a coffee and see your bot's status via `http://localhost:8000`
 * Easy and sexy enough ?? If `yes`, please share with people who needs help.
