@@ -1,0 +1,21 @@
+= Have fun with CloudFlare Slack Bot
+:published_at: 2016-09-11
+:hp-tags: Docker, CloudFlare, Slack, Go
+:compat mode: true
+
+## What is it ?
+* It's a `Slack` bot was written in `Go` to help users interact with `CloudFlare`, eg clear `cloudflare cache` via `slack chat`.
+* It has pre-compiled binaries and `Docker` built, so it's very ez to rock.
+
+## Let the fun begin
+* Github: https://github.com/locnh/cloudflare-slackbot
+* Dockerhub: https://hub.docker.com/r/locnh/cloudflare-slackbot
+
+## Contribute
+* Fork it on github
+* Make some changes
+* Create pull request
+* Grab a coffee
+
+## Screenshot
+image::https://raw.githubusercontent.com/locnh/cloudflare-slackbot/master/screenshot.png[Screenshot]
