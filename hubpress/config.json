@@ -22,5 +22,25 @@
   },
   "theme": {
     "name": "uno"
+  },
+  "urls": {
+    "site": "http://locnh.com",
+    "hubpress": "https://locnh.com",
+    "theme": "//locnh.com/themes/uno",
+    "images": "http://locnh.com/images"
+  },
+  "initialisationConfigComponent": {
+    "name": "initialise-configuration",
+    "computed": {},
+    "methods": {},
+    "staticRenderFns": [
+      null,
+      null,
+      null
+    ],
+    "_compiled": true,
+    "beforeCreate": [
+      null
+    ]
   }
 }
