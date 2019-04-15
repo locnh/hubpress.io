@@ -7,10 +7,10 @@
   },
   "site": {
     "title": "Life hacker, life's easier",
-    "description": "It's much easier than you think to live the life you want ...",
+    "description": "It's much easier than you think to live the life you want!",
     "logo": "https://s.gravatar.com/avatar/24691fef40414e819ee70b5b72cc2ebd?s=300",
     "cover": "https://locnh.com/images/atmosphere-background-bright-19670.jpg",
-    "postsPerPage": "5",
+    "postsPerPage": "7",
     "googleAnalytics": "UA-70277513-1",
     "disqus": "locnh",
     "delay": "",
@@ -34,10 +34,10 @@
     "name": "uno-zen"
   },
   "urls": {
-    "site": "https://locnh.com",
+    "site": "http://locnh.com",
     "hubpress": "https://locnh.com",
-    "theme": "https://locnh.com/themes/uno-zen",
-    "images": "https://locnh.com/images"
+    "theme": "//locnh.com/themes/uno-zen",
+    "images": "http://locnh.com/images"
   },
   "initialisationConfigComponent": {
     "name": "initialise-configuration",
