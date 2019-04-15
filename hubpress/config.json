@@ -34,10 +34,10 @@
     "name": "uno-zen"
   },
   "urls": {
-    "site": "http://locnh.com",
+    "site": "https://locnh.com",
     "hubpress": "https://locnh.com",
-    "theme": "//locnh.com/themes/uno-zen",
-    "images": "http://locnh.com/images"
+    "theme": "https://locnh.com/themes/uno-zen",
+    "images": "https://locnh.com/images"
   },
   "initialisationConfigComponent": {
     "name": "initialise-configuration",
