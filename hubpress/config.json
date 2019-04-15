@@ -25,7 +25,7 @@
   },
   "urls": {
     "site": "http://locnh.com",
-    "hubpress": "http://locnh.com",
+    "hubpress": "https://locnh.com",
     "theme": "//locnh.com/themes/uno-zen",
     "images": "http://locnh.com/images"
   },
