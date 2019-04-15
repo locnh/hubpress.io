@@ -12,13 +12,23 @@
     "cover": "",
     "postsPerPage": "5",
     "googleAnalytics": "UA-70277513-1",
-    "disqus": "locnh"
+    "disqus": "locnh",
+    "delay": "",
+    "blogPath": ""
   },
   "socialnetwork": {
     "email": "me@locnh.com",
     "twitter": "https://twitter.com/locnh",
     "linkedin": "https://linkedin.com/in/locnh",
-    "github": "https://github.com/locnh"
+    "github": "https://github.com/locnh",
+    "facebook": "https://facebook.com/locnh",
+    "googleplus": "",
+    "instagram": "",
+    "pinterest": "",
+    "flickr": "",
+    "stackoverflow": "",
+    "paypalme": "",
+    "opencollective": ""
   },
   "theme": {
     "name": "uno-zen"
@@ -42,5 +52,6 @@
     "beforeCreate": [
       null
     ]
-  }
+  },
+  "navigation": []
 }
