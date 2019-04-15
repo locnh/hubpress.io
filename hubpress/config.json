@@ -36,7 +36,7 @@
   "urls": {
     "site": "http://locnh.com",
     "hubpress": "https://locnh.com",
-    "theme": "//locnh.com/themes/uno-zen",
+    "theme": "//locnh.com/themes/uno",
     "images": "http://locnh.com/images"
   },
   "initialisationConfigComponent": {
