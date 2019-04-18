@@ -49,6 +49,16 @@ classes that you can use:
 <nav class="cover-navigation navigation--social">
   <ul class="navigation">
 
+    {{#if socialnetwork.medium}}
+    <!-- Medium -->
+    <li class="navigation__item">
+      <a href="{{socialnetwork.medium}}" title="Blog on Medium">
+        <i class='icon icon-social-medium'></i>
+        <span class="label">Medium</span>
+      </a>
+    </li>
+    {{/if}}
+
     {{#if socialnetwork.skype}}
     <!-- Skype -->
     <li class="navigation__item">
