@@ -49,8 +49,18 @@ classes that you can use:
 <nav class="cover-navigation navigation--social">
   <ul class="navigation">
 
+    {{#if socialnetwork.skype}}
+    <!-- Skype -->
+    <li class="navigation__item">
+      <a href="{{socialnetwork.skype}}" title="Skype ID">
+        <i class='icon icon-social-skype'></i>
+        <span class="label">Skype</span>
+      </a>
+    </li>
+    {{/if}}
+
     {{#if socialnetwork.facebook}}
-    <!-- Twitter -->
+    <!-- Facebook -->
     <li class="navigation__item">
       <a href="{{socialnetwork.facebook}}" title="Facebook account">
         <i class='icon icon-social-facebook'></i>
