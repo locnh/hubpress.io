@@ -19,9 +19,17 @@
   "socialnetwork": {
     "email": "me@locnh.com",
     "skype": "loc.nh",
+    "twitter": "",
     "linkedin": "https://linkedin.com/in/locnh",
     "github": "https://github.com/locnh",
-    "medium": "https://medium.com/@locnh"
+    "facebook": "",
+    "googleplus": "",
+    "instagram": "",
+    "pinterest": "",
+    "flickr": "",
+    "stackoverflow": "",
+    "paypalme": "",
+    "opencollective": ""
   },
   "theme": {
     "name": "uno"
