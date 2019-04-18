@@ -54,5 +54,10 @@
       null
     ]
   },
-  "navigation": []
+  "navigation": [
+    {
+      "label": "Telegram",
+      "url": "https://t.me/locnh"
+    }
+  ]
 }
